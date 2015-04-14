@@ -35,6 +35,16 @@ vmware-iso:
 	find output-vmware-iso/. -name *.vmx -exec sed -i.bak "s/config.version\ \=\ \"7\"/config.version\ \=\ \"8\"/g" {} \;
 	find output-vmware-iso/. -name *.vmx -exec sed -i.bak "s/virtualhw.version\ \=\ \"7\"/virtualhw.version\ \=\ \"9\"/g" {} \;
 
+centos-7.0-minimal-qemu:
+	rm -rf builds/qemu/centos-7.0-srv
+	image_basename=centos-7.0-srv \
+	iso=CentOS-7-x86_64-Minimal-1503-01.iso \
+	iso_checksum=d07ab3e615c66a8b2e9a50f4852e6a77 \
+	iso_checksum_type=md5 \
+	iso_url=http://centos.t.is/7/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso \
+	timezone=GMT \
+	bash CentOS-7.0-x86_64.sh
+
 centos-6.5-qemu:
 	rm -rf builds/qemu/centos-6.5-srv
 	image_basename=centos-6.5-srv \

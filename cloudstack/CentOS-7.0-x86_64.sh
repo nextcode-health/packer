@@ -45,7 +45,8 @@ echo 'TIMEZONE = ' $timezone
 
 declare -A swap_size
 
-swap_size=( ["10"]="512" ["20"]="1024" ["40"]="2048" ["80"]="4096" ["160"]="4096" ["320"]="4096" ["640"]="9216" )
+#swap_size=( ["10"]="512" ["20"]="1024" ["40"]="2048" ["80"]="4096" ["160"]="4096" ["320"]="4096" ["640"]="9216" )
+swap_size=( ["320"]="4096" )
 
 sed -i.bak -e "s/timezone\ .*/timezone\ $timezone/" http_directory/centos-7.0/ks.cfg
 
@@ -62,7 +63,7 @@ for size in "${!swap_size[@]}"; do
       -var ISO_CHECKSUM=$iso_checksum \
       -var ISO_CHECKSUM_TYPE=$iso_checksum_type \
       -var ISO_URL=$iso_url \
-      CentOS-7.0.json
+      CentOS-7.0-x86_64.json
       echo 'Building image'
       echo 'Image basename = ' $image_basename
       echo 'ISO = ' $iso
